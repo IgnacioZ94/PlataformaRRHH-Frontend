@@ -15,7 +15,19 @@ const Category = () => {
                 alert(result.data.Error)
             }
         }).catch(err => console.log(err))
-    }, [])
+    }, []);
+
+    const handleDelete = (id) => {
+        axios.delete('http://localhost:3000/auth/delete_category/'+id)
+        .then(result => {
+            if(result.data.Status) {
+                window.location.reload()
+            } else {
+                alert(result.data.Error)
+            }
+        })
+      } 
+
   return (
     <div className='px-5 mt-3'>
         <div className='d-flex justify-content-center'>
@@ -27,6 +39,8 @@ const Category = () => {
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Description</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,6 +48,13 @@ const Category = () => {
                         category.map(c => (
                             <tr>
                                 <td>{c.name}</td>
+                                <td>{c.description}</td>
+                                <td>
+                                    <button className="btn btn-danger btn-sm" onClick={() => handleDelete(c.id)}>
+                                    Delete
+                                    </button>
+                                </td>
+
                             </tr>
                         ))
                     }
