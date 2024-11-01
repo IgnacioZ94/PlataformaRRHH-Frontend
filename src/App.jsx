@@ -13,6 +13,7 @@ import AddCategory from './Components/AddCategory'
 import PrivateRoute from './Components/PrivateRoute'
 import AddEmployee from './Components/AddEmployee'
 import EditEmployee from './Components/EditEmployee'
+import EmployeeDetail from './Components/EmployeeDetail'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route path='/' element={<Start />}></Route>
       <Route path='/adminlogin' element={<Login />}></Route>
       <Route path='/employee_login' element={<EmployeeLogin />}></Route>
+      <Route path='/employee_detail/:id' element={<EmployeeDetail />}></Route>
       <Route path='/dashboard' element={
         <PrivateRoute >
           <Dashboard />
@@ -32,6 +34,7 @@ function App() {
         <Route path='/dashboard/profile' element={<Profile />}></Route>
         <Route path='/dashboard/add_category' element={<AddCategory />}></Route>
         <Route path='/dashboard/add_employee' element={<AddEmployee />}></Route>
+        <Route path='/dashboard/edit_employee/:id' element={<EditEmployee />}></Route>
         <Route path='/dashboard/edit_employee/:id' element={<EditEmployee />}></Route>
       </Route>
     </Routes>
